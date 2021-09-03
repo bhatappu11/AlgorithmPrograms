@@ -1,9 +1,9 @@
 package com.bridgelabz.algorithmprograms;
 
-public class MergeSort {
-	public static void merge(String words[], int start, int middle, int end)
+public class MergeSort<K extends Comparable<K>> {
+	public void merge(K[] words, int start, int middle, int end)
     {
-		String temp[] = new String[end - start + 1];
+		K[] temp = (K[])new Comparable[end - start + 1];
 		int i = start, j = middle+1, k = 0;
 
 		while(i <= middle && j <= end) {
@@ -33,7 +33,7 @@ public class MergeSort {
 			words[i] = temp[i - start];
 		}
     }
-	public static void mergeSort(String words[], int start, int end){
+	public void mergeSort(K[] words, int start, int end){
         if (start < end) {
             int middle =start+ (end-start)/2;
 
@@ -44,7 +44,7 @@ public class MergeSort {
         }
     }
  
-    public static void printArray(String words[]) {
+    public void printArray(String words[]) {
         for (int index = 0; index < words.length; index++) {
             System.out.print(words[index] + " ");
         }
@@ -52,11 +52,12 @@ public class MergeSort {
     }
 
 	public static void main(String[] args) {
+		MergeSort<String> sortObject = new MergeSort<String>();
 		String sentence = "We feed our dog three times a day";
         String words[] = sentence.toLowerCase().split(" ");
  
-        mergeSort(words, 0, words.length - 1);
-        printArray(words);
+        sortObject.mergeSort(words, 0, words.length - 1);
+        sortObject.printArray(words);
 	}
 
 }
